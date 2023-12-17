@@ -31,18 +31,3 @@ FISH_COLORS = [
 ]
 
 
-class FishForm(forms.ModelForm):
-    size = forms.TextInput(attrs={'class': 'form-control'})
-    image = forms.ImageField()
-
-    class Meta:
-        model = Fish
-        fields = ('name', 'model', 'price', 'size', 'color', 'image')
-
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'model': forms.Select(attrs={'class': 'form-control'}, choices=FISH_MODELS),
-            'price': forms.TextInput(attrs={'class': 'form-control'}),
-
-            'color': forms.Select(attrs={'class': 'form-control'}, choices=FISH_COLORS),
-        }
