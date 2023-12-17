@@ -1,0 +1,17 @@
+{% extends 'fishapp/base.html' %}
+
+{% block content %}
+    <center>
+    <h2>Add Fish</h2>
+        <br/>
+    </center>
+<div class="container">
+    <div class="row justify-content-center">
+        <form action="" method="post" class="form-group" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}

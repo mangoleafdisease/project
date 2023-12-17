@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Shop</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+     /* Custom Navbar Style */
+  .navbar {
+    padding: 0px 0;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-item {
+    margin: 0 10px;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    color: white !important; /* Override Bootstrap default text color */
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #ffc107 !important; /* Change color on hover */
+  }
+
+  .navbar-toggler-icon {
+    background-color: white; /* Set the hamburger icon color */
+  }
+  a {
+    padding: 0;
+  }
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Set a background color for the body */
+    color: #343a40; /* Set the default text color */
+  }
+
+  /* Section Style */
+  section {
+    padding: 40px 0;
+  }
+
+  /* Footer Style */
+  footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+   /* Gallery Section Style with Background Color */
+  #gallery {
+    background-color: #65a5dd; /* Baguhin ang kulay ng likod batay sa iyong disenyo */
+    padding: 80px 0;
+  }
+
+  #gallery h2 {
+    color: #fff; /* Baguhin ang kulay ng teksto batay sa iyong disenyo */
+  }
+
+  .card {
+    border: none;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-img-top {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #fff; /* Baguhin ang kulay ng teksto batay sa iyong disenyo */
+  }
+
+  .card-text {
+    color: #f0f0f0; /* Baguhin ang kulay ng teksto batay sa iyong disenyo */
+  }
+
+  .btn-primary {
+    background-color: #003366; /* Baguhin ang kulay ng pindutan batay sa iyong disenyo */
+    border-color: #003366;
+  }
+
+  .btn-primary:hover {
+    background-color: #001a33; /* Baguhin ang kulay ng pindutan batay sa iyong disenyo */
+    border-color: #001a33;
+  }
+
+  .text-decoration-underline {
+    text-decoration: underline;
+  }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href={% url 'index' %}>Fish Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+    {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'login' %}>Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'register' %}>Register</a>
+      </li>
+    {% endif %}
+        {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'logout' %}>Logout</a>
+      </li>
+
+      <li class="nav-item">
+        <p class="nav-link">Hello {{ user.username }}!</p>
+      </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

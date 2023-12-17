@@ -1,0 +1,53 @@
+{% extends 'fishapp/base.html' %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ MEDIA_URL }}{{ fish.image.url }}" alt="Fish Detail" class="img-fluid">
+      </div>
+    <div class="col-md-6">
+    <form method="post">
+    {% csrf_token %}
+      <div >
+        <p class="h2">{{ fish.name }}</p>
+        <input type="hidden" name="name" value={{ fish.name }}>
+        <p class="lead">Model: {{ fish.model }}</p>
+        <p>Price: ₱{{ fish.price }}</p>
+        <input type="hidden" name="price" value={{ fish.price }}>
+
+        <!-- Color Selection -->
+        <div class="form-group">
+          <label for="colorSelect">Available Colors:</label>
+          <select class="form-control" id="colorSelect" name="color">
+            <option>{{ fish.color }}</option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="sizeSelect">Select Size:</label>
+          <select class="form-control" id="sizeSelect" name="size">
+              {% for ssize in sizes %}
+                <option>{{ ssize }}</option>
+              {% endfor %}
+
+          </select>
+        </div>
+
+        <p class="text-success">In Stock: {{ in_stock }} pairs</p>
+
+        <p>Explore the underwater world with our amazing collection of fishes. Each fish has its own unique charm and characteristics. Dive into the beauty of FishOnline!</p>
+
+      {% if user.is_authenticated %}
+        <button class="btn btn-primary">Buy Now</button>
+      {% endif %}
+      </div>
+    </form>
+    </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

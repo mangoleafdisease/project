@@ -1,0 +1,16 @@
+{% extends 'fishapp/base.html' %}
+
+{% block content %}
+    {% if form.errors %}
+    <p class="text-danger">Invalid input</p>
+    {% endif %}
+<div class="container mt-5">
+  <h2>Register</h2>
+  <form method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-primary" value="Register">
+  </form>
+
+</div>
+{% endblock %}
